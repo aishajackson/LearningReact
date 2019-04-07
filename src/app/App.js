@@ -1,13 +1,14 @@
 import React from 'react'
-import ToDoItem from './ToDoItem'
+import Joke from './Joke'
+import jokesData from './jokesData'
 
 function App(){
+
+	const jokeComponents = jokesData.map(joke => <Joke key={joke.id} question={joke.question} punchLine={joke.punchLine}/>)
+	
 	return(
 		<div>
-			<ToDoItem />
-			<ToDoItem />
-			<ToDoItem />
-			<ToDoItem />
+			{jokeComponents}
 		</div>
 	)
 }
