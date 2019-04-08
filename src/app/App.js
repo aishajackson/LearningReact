@@ -1,13 +1,23 @@
 import React, {Component} from "react"
-function App(){
-    return(
-        <div>
-            <img src="https://www.fillmurray.com/200/100"/>
-            <br />
-            <br />
-            <button>Click Me</button>
+import TodoItem from "./TodoItem"
+import todosData from "./todosData"
 
+class App extends Component{
+    constructor(){
+        super()
+        this.state = {
+            data: todosData
+        }
+    }
+
+    render(){
+        const TodoComponent = this.state.data.map(todo => <TodoItem key={todo.id} item={todo} />)
+        return(
+            <div className="todo-list">
+            {TodoComponent}
         </div>
-    )
+        )
+    }
 }
+
 export default App
