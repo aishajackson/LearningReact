@@ -1,20 +1,21 @@
 import React from "react"
 
-function handleClick(){
-    console.log("I was clicked")
-}
-function handleMouseover(){
-    console.log("I was moused over")
-}
-function App() {
-    return (
-        <div>
-            <img onMouseOver={handleMouseover} src="https://www.fillmurray.com/200/100"/>
-            <br />
-            <br />
-            <button onClick={handleClick}>Click me</button>
-        </div>
-    )
+class App extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            count: 0
+        }
+    }
+    
+    render() {
+        return (
+            <div>
+                <h1>{this.state.count}</h1>
+                <button>Change!</button>
+            </div>
+        )
+    }
 }
 
 export default App
