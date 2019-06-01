@@ -1,7 +1,10 @@
 import React from "react"
 
 function Conditional(props) {
-    return <h1>Some cool stuff about conditional rendering</h1>
+    console.log(props)
+    return (
+        <div>logged in</div>
+    )
 }
 
 export default Conditional
