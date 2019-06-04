@@ -12,31 +12,29 @@ Given a stateless functional component:
 */
 
 class App extends Component {
+
     constructor(){
         super()
         this.state = {
-            isLoggedIn : false
+            isLoggedIn: false
         }
-
         this.handleClick = this.handleClick.bind(this)
     }
 
     handleClick(){
         this.setState((prevState) => {
             return{
-                isLoggedIn : !prevState.isLoggedIn
+                isLoggedIn: !prevState.isLoggedIn
             }
         })
     }
-
     render(){
         let buttonVal = this.state.isLoggedIn ? 'LOG OUT' : 'LOG IN'
         let text = this.state.isLoggedIn ? 'Logged In' : 'Logged Out'
-        
         return (
             <div>
                 <button onClick={this.handleClick}>{buttonVal}</button>
-                <h2>{text}</h2>
+                <h3>{text}</h3>
             </div>
         )
     }
