@@ -23,50 +23,53 @@ class App extends Component {
             lastName: "",
             age: "",
             gender: "",
-            destination:"",
-            dietaryRestrictions: {
-                isVegan: "",
-                isVegetarian: "",
-                isGF: ""
-            }
+            destination: "",
+            isVegan: false,
+            isKosher: false,
+            isLactoseFree: false
         }
-    this.handleChange = this.handleChange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
-
-    handleChange(event){
-        console.log(event.target)
+    
+    handleChange(event) {
         const {name, value, type, checked} = event.target
-        type === 'checkbox' ? this.setState(prevState => {
-            return {
-                ...prevState.dietaryRestrictions,
-                dietaryRestrictions: {
-                    [name]: checked
-                }
-            }
-            
-        }) : this.setState({[name]: value})
+        type === "checkbox" ? 
+            this.setState({
+                [name]: checked
+            })
+        :
+        this.setState({
+            [name]: value
+        }) 
     }
     
     render() {
         return (
             <main>
                 <form>
-                    <input
-                        type="text"
-                        name="firstName"
+                    <input 
+                        name="firstName" 
                         value={this.state.firstName} 
+                        onChange={this.handleChange} 
                         placeholder="First Name" 
-                        onChange={this.handleChange} /><br />
-                    <input type="text"
-                        name="lastName"
-                        value={this.state.lastName} 
+                    />
+                    <br />
+                    
+                    <input 
+                        name="lastName" 
+                        value={this.state.lastName}
+                        onChange={this.handleChange} 
                         placeholder="Last Name" 
-                        onChange={this.handleChange} /><br />
-                    <input type="text"
-                        name="age"
-                        value={this.state.age} 
+                    />
+                    <br />
+                    
+                    <input 
+                        name="age" 
+                        value={this.state.age}
+                        onChange={this.handleChange} 
                         placeholder="Age" 
-                        onChange={this.handleChange} /><br />
+                    />
+                    <br />
                     
                     <label>
                         <input 
@@ -77,7 +80,9 @@ class App extends Component {
                             onChange={this.handleChange}
                         /> Male
                     </label>
+                    
                     <br />
+                    
                     <label>
                         <input 
                             type="radio" 
@@ -87,47 +92,50 @@ class App extends Component {
                             onChange={this.handleChange}
                         /> Female
                     </label>
+                    
                     <br />
                     
-                    <label>Destination:</label>
-                        <select 
-                            value={this.state.destination}
-                            onChange={this.handleChange}
-                            name="destination"
-                        >
-                            <option value="Bali">Bali</option>
-                            <option value="Cuba">Cuba</option>
-                            <option value="Hawaii">Hawaii</option>
-                            <option value="Portugal">Portugal</option>
-                            <option value="Brazil">Brazil</option>
-                        </select>
+                    <select 
+                        value={this.state.destination} 
+                        name="destination" 
+                        onChange={this.handleChange}
+                    >
+                        <option value="">-- Please Choose a destination --</option>
+                        <option value="germany">Germany</option>
+                        <option value="norway">Norway</option>
+                        <option value="north pole">North Pole</option>
+                        <option value="south pole">South Pole</option>
+                    </select>
+                    
                     <br />
                     
                     <label>
                         <input 
-                            type="checkbox" 
+                            type="checkbox"
                             name="isVegan"
-                            checked={this.state.dietaryRestrictions.isVegan}
                             onChange={this.handleChange}
+                            checked={this.state.isVegan}
                         /> Vegan?
                     </label>
                     <br />
+                    
                     <label>
                         <input 
-                            type="checkbox" 
-                            name="isVegetarian"
-                            checked={this.state.dietaryRestrictions.isVegetarian}
+                            type="checkbox"
+                            name="isKosher"
                             onChange={this.handleChange}
-                        /> Vegetarian?
+                            checked={this.state.isKosher}
+                        /> Kosher?
                     </label>
                     <br />
+                    
                     <label>
                         <input 
-                            type="checkbox" 
-                            name="isGF"
-                            checked={this.state.dietaryRestrictions.isGF}
+                            type="checkbox"
+                            name="isLactoseFree"
                             onChange={this.handleChange}
-                        /> Gluten Free?
+                            checked={this.state.isLactoseFree}
+                        /> Lactose Free?
                     </label>
                     <br />
                     
@@ -139,12 +147,12 @@ class App extends Component {
                 <p>Your age: {this.state.age}</p>
                 <p>Your gender: {this.state.gender}</p>
                 <p>Your destination: {this.state.destination}</p>
-                <p>
-                    Your dietary restrictions: 
-                    <p>Vegan: {this.state.dietaryRestrictions.isVegan ? "Yes" : "No"}</p>
-                    <p>Vegetarian: {this.state.dietaryRestrictions.isVegetarian ? "Yes" : "No"}</p>
-                    <p>Gluten Free: {this.state.dietaryRestrictions.isGF ? "Yes" : "No"}</p>
-                </p>
+                <p>Your dietary restrictions:</p>
+                
+                <p>Vegan: {this.state.isVegan ? "Yes" : "No"}</p>
+                <p>Kosher: {this.state.isKosher ? "Yes" : "No"}</p>
+                <p>Lactose Free: {this.state.isLactoseFree ? "Yes" : "No"}</p>
+                
             </main>
         )
     }
